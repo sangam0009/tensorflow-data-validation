@@ -1,0 +1,11 @@
+name: Tensorflow data validation
+description: This task will create the data for model input
+
+implementation:
+    container:
+        image: us-docker.pkg.dev/dw-analytics-d01/mlopstest/tfdv-image
+        command:
+            [
+                "/opt/conda/envs/tfdv-dev/bin/python",
+                "entrypoint.py",
+            ]

@@ -1,0 +1,45 @@
+{
+  "pipelineSpec": {
+    "components": {
+      "comp-tensorflow-data-validation": {
+        "executorLabel": "exec-tensorflow-data-validation"
+      }
+    },
+    "deploymentSpec": {
+      "executors": {
+        "exec-tensorflow-data-validation": {
+          "container": {
+            "command": [
+              "/opt/conda/envs/tfdv-dev/bin/python",
+              "entrypoint.py"
+            ],
+            "image": "us-docker.pkg.dev/dw-analytics-d01/mlopstest/tfdv-image"
+          }
+        }
+      }
+    },
+    "pipelineInfo": {
+      "name": "tfdv"
+    },
+    "root": {
+      "dag": {
+        "tasks": {
+          "tensorflow-data-validation": {
+            "cachingOptions": {
+              "enableCache": true
+            },
+            "componentRef": {
+              "name": "comp-tensorflow-data-validation"
+            },
+            "taskInfo": {
+              "name": "tensorflow-data-validation"
+            }
+          }
+        }
+      }
+    },
+    "schemaVersion": "2.0.0",
+    "sdkVersion": "kfp-1.8.18"
+  },
+  "runtimeConfig": {}
+}
